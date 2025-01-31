@@ -9,15 +9,19 @@ import { StatusCodes } from 'http-status-codes';
 
 interface Icity {
     name : string,
+    state: string
 }
-
 
 const bodyValidation: yup.ObjectSchema<Icity> = yup.object()
     .shape({
         name: 
             yup.string()
-            .required("Nome é obrigatório")
-            .min(3, "Nome deve conter ao menos 3 caracteres"),
+            .required()
+            .min(3),
+        state: 
+            yup.string()
+            .required()
+            .min(3)
     });
 
 export const create = async (
@@ -27,12 +31,26 @@ export const create = async (
     let data: Icity | undefined = undefined;
 
     try {
-        data = await bodyValidation.validate(req.body);
-    } catch(error) {
-        const yupError = error as yup.ValidationError;
+        data = await bodyValidation.validate(
+            req.body,
+            { abortEarly: false}
+        );
+    } catch(e) {
+        const yupError = e as yup.ValidationError;
+        const errors: Record<string, string> = {}
+
+        yupError.inner.forEach(error => {
+
+            if(!error.path){
+                return;
+            }
+
+            errors[error.path] = error.message;
+        });
+
         res.status(StatusCodes.BAD_REQUEST).json({
             errors: {
-                default: yupError.message
+                default: errors
             }
         }); 
     }
