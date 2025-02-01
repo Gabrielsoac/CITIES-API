@@ -7,12 +7,13 @@ type TProperty = 'body' | 'header' | 'query' | 'params';
 
 type TAllSchemas = Record<TProperty, Schema>;
 
-type TValidation = (validation: Partial<TAllSchemas>) => RequestHandler;
+type TValidation = (schemas: Partial<TAllSchemas>) => RequestHandler;
 
-export const validation: TValidation = (validation) => (req, res, next) => {
+export const validation: TValidation = (schemas) => (req, res, next) => {
+    
     const errorsResult: Record<string, Record<string, string>> = {};
 
-    Object.entries(validation).forEach(([key, schema]) => {
+    Object.entries(schemas).forEach(([key, schema]) => {
         try {
             schema.validateSync(
                 req[key as TProperty],

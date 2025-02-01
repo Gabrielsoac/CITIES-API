@@ -5,19 +5,15 @@ import { Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
 interface Icity {
-    name : string,
-    state: string
-}
-
-interface Ifilter {
-    filter?: string
+    name : string
 }
 
 export const create = async (
     req: Request<{}, {}, Icity>,
     res: Response) => {
 
-    res.status(StatusCodes.OK).send("sucess");
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+        .send("Não Implementado");
 }
 
-export { Icity, Ifilter } 
+export { Icity } 
