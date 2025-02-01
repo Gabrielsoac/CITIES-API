@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createBodyValidator } from '../shared/middlawares/cities/CreateMiddleware';
 
 import {citiesController} from './../controllers';
+import { createValidation } from '../shared/middlaware/cities/Create';
 
 const router = Router();
 
@@ -11,7 +11,7 @@ router.get('/', (_, res) => {
 
 router.post(
     '/cities',
-    createBodyValidator,
+    createValidation,
     citiesController.create);
 
 export { router };
