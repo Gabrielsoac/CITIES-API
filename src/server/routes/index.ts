@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { createBodyValidator } from '../shared/middlawares/cities/CreateMiddleware';
 
 import {citiesController} from './../controllers';
 
@@ -8,6 +9,9 @@ router.get('/', (_, res) => {
     res.send('Olá');
 });
 
-router.post('/cities', citiesController.create);
+router.post(
+    '/cities',
+    createBodyValidator,
+    citiesController.create);
 
 export { router };
