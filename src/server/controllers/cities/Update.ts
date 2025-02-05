@@ -4,7 +4,7 @@ import { IBodyProps } from './Create';
 import { IParamsProps } from './GetById';
 import { StatusCodes } from 'http-status-codes';
 
-export const updateById = (req: Request<IParamsProps, {}, IBodyProps>, res: Response) => {
+export const updateById = async (req: Request<IParamsProps, {}, IBodyProps>, res: Response) => {
 
     console.log(req.params);
     console.log(req.body);

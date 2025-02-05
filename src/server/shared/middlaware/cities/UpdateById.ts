@@ -21,6 +21,6 @@ const validationData = {
     params: paramsValidation
 }
 
-export const validationUpdate = validation(validationData);
+export const updateValidation = validation(validationData);
 
 

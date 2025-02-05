@@ -2,7 +2,7 @@ import { validation } from '../Validation';
 import { IParamsProps } from './../../../controllers/cities/GetById';
 import * as Yup from 'yup';
 
-const paramValidation: Yup.ObjectSchema<IParamsProps> = 
+const paramsValidation: Yup.ObjectSchema<IParamsProps> = 
     Yup.object().shape(
         {
             id: Yup.number().integer().required().moreThan(0),
@@ -10,7 +10,7 @@ const paramValidation: Yup.ObjectSchema<IParamsProps> =
     );
 
 const paramValidationData = {
-    params: paramValidation
+    params: paramsValidation
 }
 
 export const getByIdValidation = validation(paramValidationData);
