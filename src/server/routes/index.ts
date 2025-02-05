@@ -3,17 +3,22 @@ import { Router } from 'express';
 import { citiesController } from './../controllers';
 import { getAllValidation } from '../shared/middlaware/cities/GetAll';
 import { createValidation } from '../shared/middlaware/cities/Create';
-import { getAll } from '../controllers/cities/GetAll';
+import { getByIdValidation } from '../shared/middlaware/cities/GetById';
 
 const router = Router();
 
 router.get(
     '/',
     getAllValidation,
-    getAll);
+    citiesController.getAll);
+
+router.get(
+    '/:id',
+    getByIdValidation,
+    citiesController.getById);
 
 router.post(
-    '/cities',
+    '/',
     createValidation,
     citiesController.create);
 
