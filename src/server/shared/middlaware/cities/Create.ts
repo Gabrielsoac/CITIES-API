@@ -1,8 +1,8 @@
 import * as yup from 'yup';
-import { Icity } from '../../../controllers/cities/Create';
+import { IBodyProps } from '../../../controllers/cities/Create';
 import { validation } from '../Validation';
 
-const bodyValidation: yup.ObjectSchema<Icity> = yup.object()
+const bodyValidation: yup.ObjectSchema<IBodyProps> = yup.object()
     .shape({
         name: 
             yup.string()
