@@ -5,7 +5,7 @@ import { getAllValidation } from '../shared/middlaware/cities/GetAll';
 import { createValidation } from '../shared/middlaware/cities/Create';
 import { getByIdValidation } from '../shared/middlaware/cities/GetById';
 import { updateValidation } from '../shared/middlaware/cities/UpdateById';
-import { deleteValidation } from '../shared/middlaware/cities/Delete';
+import { deleteValidation } from '../shared/middlaware/cities/DeleteById';
 
 const router = Router();
 
